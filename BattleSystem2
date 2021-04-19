@@ -1,0 +1,62 @@
+import random
+
+fight = True
+
+#Dictionary holding wepons [Key] and damage [value]
+weapons = {
+    "sword" : random.randint(1,6),
+    "two-handed sword" : random.randint(1,10),
+    "arrow" : random.randint(1,4),
+    "cursed arrow" : random.randint(1,6),
+    "mace" : random.randint(1,6),
+    "flaming mace" : random.randint(1,10)
+    }
+
+
+spells = {
+    "magic hand" : random.randint(1,6),
+    "fireball" : random.randint(1,10),
+    "hostile murmur" : random.randint(1,4),
+    "ignite" : random.randint(1,6),
+    "icicle" : random.randint(1,6),
+    "ice shower" : random.randint(1,10)
+    }
+#Empty list to hold the keys
+list = []
+listw = []
+
+#Loads weapon keys into key list
+for key in weapons.keys():
+    list.append(key)
+
+for key in spells.keys():
+    listw.append(key)
+
+#Health
+Knight = 20
+Wizard = 20
+
+while(fight):
+    choice = random.choice(list)
+    damage = weapons[choice]
+    print("Knight weapon chosen: ", choice)
+    print("Damage dealt:  ", damage)
+    Wizard -= damage
+    print("Wizard is now at ", Wizard, "HP")
+    if Wizard <= 0:
+        print("Knigt has won")
+        print("Knight Health: ", Knight)
+        print("Wizard Health: ", Wizard)
+        break
+
+    choicew = random.choice(listw)
+    damagew = spells[choicew]
+    print("Wizard spell chosen: ", choicew)
+    print("Damage dealt:  ", damagew)
+    Knight -= damagew
+    print("Knight is now at ", Knight, "HP")
+    if Knight <= 0:
+        print("Wizard has won")
+        print("Knight Health: ", Knight)
+        print("Wizard Health: ", Wizard)
+        fight = False
